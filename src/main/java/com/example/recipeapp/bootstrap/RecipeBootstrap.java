@@ -41,42 +41,42 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         //get UOMs
         Optional<UnitOfMeasure> eachUomOptional = unitOfMeasureRepository.findByDescription("Each");
-        if(!eachUomOptional.isPresent()) {
+        if (!eachUomOptional.isPresent()) {
             throw new RuntimeException("Expected UOM Not Found !");
         }
 
         Optional<UnitOfMeasure> tablespoonOptional = unitOfMeasureRepository.findByDescription("Tablespoon");
-        if(!tablespoonOptional.isPresent()) {
+        if (!tablespoonOptional.isPresent()) {
             throw new RuntimeException("Expected UOM Not Found !");
         }
 
         Optional<UnitOfMeasure> teaspoonOptional = unitOfMeasureRepository.findByDescription("Teaspoon");
-        if(!teaspoonOptional.isPresent()) {
+        if (!teaspoonOptional.isPresent()) {
             throw new RuntimeException("Expected UOM Not Found !");
         }
 
         Optional<UnitOfMeasure> dashOptional = unitOfMeasureRepository.findByDescription("Dash");
-        if(!dashOptional.isPresent()) {
+        if (!dashOptional.isPresent()) {
             throw new RuntimeException("Expected UOM Not Found !");
         }
 
         Optional<UnitOfMeasure> cupOptional = unitOfMeasureRepository.findByDescription("Cup");
-        if(!cupOptional.isPresent()) {
+        if (!cupOptional.isPresent()) {
             throw new RuntimeException("Expected UOM Not Found !");
         }
 
         Optional<UnitOfMeasure> pinchOptional = unitOfMeasureRepository.findByDescription("Pinch");
-        if(!pinchOptional.isPresent()) {
+        if (!pinchOptional.isPresent()) {
             throw new RuntimeException("Expected UOM Not Found !");
         }
 
         Optional<UnitOfMeasure> pintOptional = unitOfMeasureRepository.findByDescription("Pint");
-        if(!pintOptional.isPresent()) {
+        if (!pintOptional.isPresent()) {
             throw new RuntimeException("Expected UOM Not Found !");
         }
 
         Optional<UnitOfMeasure> ounceOptional = unitOfMeasureRepository.findByDescription("Ounce");
-        if(!ounceOptional.isPresent()) {
+        if (!ounceOptional.isPresent()) {
             throw new RuntimeException("Expected UOM Not Found !");
         }
 
@@ -91,12 +91,12 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         //get categories
 
         Optional<Category> americanCategoryOptional = categoryRepository.findByDescription("American");
-        if(!americanCategoryOptional.isPresent()) {
+        if (!americanCategoryOptional.isPresent()) {
             throw new RuntimeException("Expected Category Not Found !");
         }
 
         Optional<Category> mexicanCategoryOptional = categoryRepository.findByDescription("Mexican");
-        if(!mexicanCategoryOptional.isPresent()) {
+        if (!mexicanCategoryOptional.isPresent()) {
             throw new RuntimeException("Expected Category Not Found !");
         }
 
@@ -124,17 +124,16 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         Notes guacamoleNotes = new Notes();
         guacamoleNotes.setRecipeNotes(" For a very quick guacamole just take a 1/4 cup of salsa and mix it in with your mashed avocados.");
 
-        guacamoleNotes.setRecipe(guacamoleRecipe);
         guacamoleRecipe.setNotes(guacamoleNotes);
 
-        guacamoleRecipe.getIngredients().add(new Ingredient("ripe avocados",new BigDecimal(2),eachUom,guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("Kosher Salt",new BigDecimal(".5"),teaSpoonUom,guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("fresh lime juice or lemon juice",new BigDecimal(2),tableSpoonUom,guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("minced red onions",new BigDecimal(2),tableSpoonUom,guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("serrano chiles, stems and seeds removed, minced",new BigDecimal(2),eachUom,guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("cilantro",new BigDecimal(2),tableSpoonUom  ,guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("freshly grated black pepper",new BigDecimal(2),dashUom,guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("ripe tomato, seeds and pulp removed, chopped",new BigDecimal(".5"),eachUom,guacamoleRecipe));
+        guacamoleRecipe.addIngredient(new Ingredient("ripe avocados", new BigDecimal(2), eachUom));
+        guacamoleRecipe.addIngredient(new Ingredient("Kosher Salt", new BigDecimal(".5"), teaSpoonUom));
+        guacamoleRecipe.addIngredient(new Ingredient("fresh lime juice or lemon juice", new BigDecimal(2), tableSpoonUom));
+        guacamoleRecipe.addIngredient(new Ingredient("minced red onions", new BigDecimal(2), tableSpoonUom));
+        guacamoleRecipe.addIngredient(new Ingredient("serrano chiles, stems and seeds removed, minced", new BigDecimal(2), eachUom));
+        guacamoleRecipe.addIngredient(new Ingredient("cilantro", new BigDecimal(2), tableSpoonUom));
+        guacamoleRecipe.addIngredient(new Ingredient("freshly grated black pepper", new BigDecimal(2), dashUom));
+        guacamoleRecipe.addIngredient(new Ingredient("ripe tomato, seeds and pulp removed, chopped", new BigDecimal(".5"), eachUom));
 
         guacamoleRecipe.getCategories().add(americanCategory);
         guacamoleRecipe.getCategories().add(mexicanCategory);
@@ -170,28 +169,27 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "Any and every kind of leftover can go inside a warm tortilla, usually with a healthy dose of pickled jalapenos. " +
                 "I can always sniff out a late-night snacker when the aroma of tortillas heating in a hot pan on the stove comes wafting through the house.");
 
-        tacosNotes.setRecipe(tacosRecipe);
         tacosRecipe.setNotes(tacosNotes);
 
-        tacosRecipe.getIngredients().add(new Ingredient("ancho Chilli Powder",new BigDecimal(2),tableSpoonUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("Dried Oregano",new BigDecimal(1),teaSpoonUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("Dried Cumin",new BigDecimal(1),teaSpoonUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("Sugar",new BigDecimal(1),teaSpoonUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("Salt",new BigDecimal(".5"),teaSpoonUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("Clove of Garlic",new BigDecimal(1),eachUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("finely grated orange zest",new BigDecimal(1),tableSpoonUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("fresh-squeezed orange juice",new BigDecimal(3),tableSpoonUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("olive oil",new BigDecimal(2),tableSpoonUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("boneless chicken thighs",new BigDecimal(4),tableSpoonUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("small corn tortillas",new BigDecimal(8),tableSpoonUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("cups packed baby arugula ",new BigDecimal(3),eachUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("medium ripe avocados, sliced",new BigDecimal(2),cupUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("radishes, thinly sliced",new BigDecimal(4),eachUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("cherry tomatoes, halved",new BigDecimal(".5"),pintUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("red onion, thinly sliced",new BigDecimal(".25"),eachUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("roughly chopped cilantro",new BigDecimal(4),eachUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("cup sour cream thinned with 1/4 cup milk",new BigDecimal(4),cupUom,tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("lime, cut into wedges",new BigDecimal(4),eachUom,tacosRecipe));
+        tacosRecipe.addIngredient(new Ingredient("ancho Chilli Powder", new BigDecimal(2), tableSpoonUom));
+        tacosRecipe.addIngredient(new Ingredient("Dried Oregano", new BigDecimal(1), teaSpoonUom));
+        tacosRecipe.addIngredient(new Ingredient("Dried Cumin", new BigDecimal(1), teaSpoonUom));
+        tacosRecipe.addIngredient(new Ingredient("Sugar", new BigDecimal(1), teaSpoonUom));
+        tacosRecipe.addIngredient(new Ingredient("Salt", new BigDecimal(".5"), teaSpoonUom));
+        tacosRecipe.addIngredient(new Ingredient("Clove of Garlic", new BigDecimal(1), eachUom));
+        tacosRecipe.addIngredient(new Ingredient("finely grated orange zest", new BigDecimal(1), tableSpoonUom));
+        tacosRecipe.addIngredient(new Ingredient("fresh-squeezed orange juice", new BigDecimal(3), tableSpoonUom));
+        tacosRecipe.addIngredient(new Ingredient("olive oil", new BigDecimal(2), tableSpoonUom));
+        tacosRecipe.addIngredient(new Ingredient("boneless chicken thighs", new BigDecimal(4), tableSpoonUom));
+        tacosRecipe.addIngredient(new Ingredient("small corn tortillas", new BigDecimal(8), tableSpoonUom));
+        tacosRecipe.addIngredient(new Ingredient("cups packed baby arugula ", new BigDecimal(3), eachUom));
+        tacosRecipe.addIngredient(new Ingredient("medium ripe avocados, sliced", new BigDecimal(2), cupUom));
+        tacosRecipe.addIngredient(new Ingredient("radishes, thinly sliced", new BigDecimal(4), eachUom));
+        tacosRecipe.addIngredient(new Ingredient("cherry tomatoes, halved", new BigDecimal(".5"), pintUom));
+        tacosRecipe.addIngredient(new Ingredient("red onion, thinly sliced", new BigDecimal(".25"), eachUom));
+        tacosRecipe.addIngredient(new Ingredient("roughly chopped cilantro", new BigDecimal(4), eachUom));
+        tacosRecipe.addIngredient(new Ingredient("cup sour cream thinned with 1/4 cup milk", new BigDecimal(4), cupUom));
+        tacosRecipe.addIngredient(new Ingredient("lime, cut into wedges", new BigDecimal(4), eachUom));
 
         tacosRecipe.getCategories().add(americanCategory);
         tacosRecipe.getCategories().add(mexicanCategory);
