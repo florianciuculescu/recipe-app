@@ -12,7 +12,6 @@ class CategoryTest {
 
     @BeforeEach
     public void setUp() {
-        System.out.println("ceva");
         category = new Category();
     }
 
