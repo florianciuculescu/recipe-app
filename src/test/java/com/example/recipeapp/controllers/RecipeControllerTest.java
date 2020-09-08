@@ -1,5 +1,6 @@
 package com.example.recipeapp.controllers;
 
+import com.example.recipeapp.commands.RecipeCommand;
 import com.example.recipeapp.domain.Recipe;
 import com.example.recipeapp.services.RecipeService;
 import org.junit.jupiter.api.BeforeEach;
